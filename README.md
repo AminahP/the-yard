@@ -1,3 +1,15 @@
+A blog app created in honour of hbcu homecoming season
+you have the abilty to see events and 
+
+
+# trello board
+https://trello.com/w/userworkspacetheyard
+
+#  link to heroku 
+
+# linked to app on netlify 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
