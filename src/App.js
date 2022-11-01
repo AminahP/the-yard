@@ -1,16 +1,16 @@
 
-import { Routes,Route } from 'react-router-dom';
-// import { useState } from 'react';
-// import Auth from './pages/Auth';
+import { Routes,Route,Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Post from './pages/Posts';
 import Create from './pages/Create';
 import Edit from './pages/Edit';
 import React from "react";
-// import NavBar from './components/NavBar';
+import Signup from "./components/Signup/Singup.js";
+import Login from "./compoonents/Login/Login.js";
+import HBCUlist from ".//pages/HBCUlist";
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-// import { getUser} from './utilities/users-service'
+
 
 
 
@@ -18,14 +18,12 @@ import Nav from 'react-bootstrap/Nav';
 
 
 function App() {
-  // const [user, setUser] = useState(getUser());
+  const user = localStorage.getItem("token");
 
   return (
-    // <div className='App'>
-      
-        // user ?
+    
     <>
-      {/* <NavBar setUser={setUser} user={user} /> */}
+      
       <Navbar bg="dark" expand="sm" variant="dark">
        <ul class="container-fluid">
           <Navbar.Brand href="/">The Yard</Navbar.Brand>
@@ -40,9 +38,11 @@ function App() {
         </ul>
       </Navbar>
       <Routes>
+        {user && <Route path="/components/Signup" element={<Signup/>}/>}
         <Route path="/" element={<Home />} />
         <Route path="/posts/:id" element={<Post />} />
-        {/* <Route path="/pages/hbculist" element={<HBCUlist/>} /> */}
+        <Route path="/pages/hbculist" element={<HBCUlist/>} />
+        <Route path="/components/Login" exact element={<Login />} />
         <Route path="/posts/create" element={<Create />} />
         <Route path="/posts/:id/edit" element={<Edit />} />
       </Routes>

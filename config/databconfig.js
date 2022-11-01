@@ -1,32 +1,26 @@
-// require("dotenv").config();
+const mongoose = require("mongoose");
+module.exports = () => {
+	const connectionParams = {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	};
+	try {
+		mongoose.connect(process.env.DB, connectionParams);
+		console.log("Connected to database successfully");
+	} catch (error) {
+		console.log(error);
+		console.log("Could not connect database!");
+	}
+};
 
-// const mongoose = require("mongoose");
+//devins way
 
-// const url = process.env.URL;
+// const mongoose = require('mongoose');
 
-// const connectDB = async () => {
-//   try {
-//     await mongoose.connect(url, {
-//       useNewUrlParser: true,
-//       useUnifiedTopology: true,
-//       useCreateIndex: true,
-//       useFindAndModify: false,
-//     });
-//     console.log("connected to mongoDB");
-//   } catch (err) {
-//     console.error(err.message);
-//     process.exit(1);
-//   }
-// };
+// mongoose.connect(process.env.MONGO_URI);
 
-// module.exports = connectDB;
+// const db = mongoose.connection;
 
-const mongoose = require('mongoose');
-
-mongoose.connect(process.env.MONGO_URI);
-
-const db = mongoose.connection;
-
-db.on('connected', () => {
-  console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
-});
+// db.on('connected', () => {
+//   console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
+// });
